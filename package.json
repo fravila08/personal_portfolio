@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "react-arc-text": "^1.0.5",
+    "reshake": "^1.2.4",
+    "styled-components": "^5.3.5"
+  }
+}
