@@ -8,6 +8,8 @@ import ProjectPage from "./pages/ProjectPage";
 import ThePast from './pages/ThePast';
 import ContactMe from "./pages/ContactMe"
 import PokeSep from './components/PokeSep';
+import SignUp from './pages/SignUp';
+import SignIn from './pages/SignIn';
 
 function App() {
   
@@ -52,6 +54,8 @@ function App() {
           <Route path="/myProjects" element={<ProjectPage />} />
           <Route path='/thePast' element={<ThePast />} />
           <Route path='/contactMe' element={<ContactMe />} />
+          <Route path='/signUp' element={<SignUp />} />
+          <Route path='/signIn' element={<SignIn />} />
         </Routes>
       </Router>
     </div>
