@@ -29,7 +29,6 @@ def sign_up(request):
         username=request.data['email'],
         password=request.data['password'],
         email=request.data['email'])
-    print(user)
     return Response({"message": "success"})
 
 
@@ -66,3 +65,25 @@ def curr_user(request):
         return HttpResponse(data)
     else:
         return JsonResponse({'user': None})
+
+@api_view(['GET'])
+def profile_page(request):
+    current_user = AppUser.objects.filter(id=request.user.id).values()[0]
+    return Response(current_user)
+    
+@api_view(["POST"])
+def savePokemon(request):
+    try:
+        user = request.user
+        name=request.data["name"]
+        nickname= request.data["nickname"]
+        move_one=request.data["move_one"]
+        move_two=request.data["move_two"]
+        move_three=request.data["move_three"]
+        move_four=request.data["move_four"]
+        newPokemon= MyPokemon.objects.create(user=user, name = name, nickname = nickname, move_one = move_one, move_two = move_two, move_three = move_three, move_four = move_four)
+        newPokemon.save()
+        return Response({"success":"you saved a new pokemon"})
+    except Exception as e:
+        print(e)
+        return Response({"failure":"something went wrong in adding a new pokemon"})

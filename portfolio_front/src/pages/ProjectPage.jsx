@@ -5,7 +5,7 @@ import { Shake } from "reshake"
 import Accordion from 'react-bootstrap/Accordion';
 import FindPokemon from "../components/findPoke";
 
-function MyProjects(){
+function MyProjects({user}){
     const [pokemon, setPokemon]=useState([])
     const [show, setShow]= useState(false)
     const pokemontList=['jolteon', 'mewtwo', 'dragonite', 'kadabra', 'blastoise', 'tyranitar']
@@ -39,7 +39,7 @@ function MyProjects(){
             </div>
             <div className="cards">
                 <div className="leftCard">
-                    <FindPokemon />
+                    <FindPokemon user={user}/>
                 </div>
                 <div className="middleCard">
                     <h1 style={{textDecoration:"underline"}}>Certificates & Projects</h1>

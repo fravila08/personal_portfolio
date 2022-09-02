@@ -3,7 +3,6 @@ import {Link } from "react-router-dom"
 function Home(){
     return (
         <div style={{paddingTop:"4vw", display:"flex", justifyContent:"center"}}>
-            {/* <Link to={"/signUp"}>Sign Up</Link> */}
             <div style={{display:"flex", flexDirection:"column", textAlign:"center", width:"70%", paddingBottom:"10vh"}}>
                 <h1>Greetings,</h1>
                 <br/>

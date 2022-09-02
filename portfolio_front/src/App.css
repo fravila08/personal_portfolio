@@ -146,7 +146,7 @@ html{
 }
 
 .insideCard{
-    height: 100%;
+    min-height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -249,4 +249,73 @@ html{
 }
 #letter22{
     transform: rotate(55deg);
+}
+
+.trainerCard{
+    min-width: 60vw;
+    border: solid black 2px;
+    border-radius: 10px;
+    background-color: rgb(245, 245, 225);
+}
+.cardHeader{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(202, 202, 202);
+    margin-top: 2vh;
+    height: 8vh;
+    margin-bottom: 1vh;
+}
+.idOnCard{
+    background-color: white;
+    border-radius: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    text-align: center;
+    height: 5vh;
+   
+}
+.cardBody{
+    display: flex;
+    width:100%
+}
+.leftSide{
+    width: 50%;
+    padding-left: 1vw;
+}
+
+ul{
+    list-style-type: none;
+}
+
+.leftSide ul li{
+    height: 5vh;
+    font-size: 20px;
+}
+.bulletCircle{
+    height: 4vh;
+}
+.star{
+    height: 4vh;
+}
+
+.rightSide{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.badges{
+    background-color: rgb(202, 202, 202);
+    height: 9vh;
+    color:white;
+    margin-bottom: 2vh;
+}
+
+.badgeBorder{
+    height: 5vh;
+    width: 3vw;
+    border: solid white 1px;
 }
