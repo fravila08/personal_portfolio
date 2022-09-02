@@ -58,12 +58,12 @@ function App() {
     <div className="App" >      
       {user ?
           <div style={{display:"flex",justifyContent:"space-around", width:"18vw", position:"absolute", top:"0", right:"0"}}>
-            <a href="#/myProfile">My Profile</a>
-            <a href="#" onClick={signOut}>Sigh Out</a>
+            <a href="#/myProfile" style={{textDecoration:"none", color:"gold"}} ><strong>My Profile</strong></a>
+            <a href="#" onClick={signOut}  style={{textDecoration:"none", color:"gold"}} ><strong>Sign Out</strong></a>
           </div> :
           <div style={{display:"flex",justifyContent:"space-around", width:"18vw", position:"absolute", top:"0", right:"0"}}>
-            <a href="#/signUp">Sign Up</a>
-            <a href="#/signIn">Sign In</a> 
+            <a href="#/signUp" style={{textDecoration:"none", color:"gold"}} ><strong>Sign Up</strong></a>
+            <a href="#/signIn" style={{textDecoration:"none", color:"gold"}} ><strong>Sign In</strong></a> 
           </div> }
       <div className='topHeader' >
         <div style={{display:"flex", justifyContent:"center", height:"35%", marginBottom:"18%"}}>

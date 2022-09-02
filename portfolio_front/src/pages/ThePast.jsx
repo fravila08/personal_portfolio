@@ -6,26 +6,14 @@ import { Shake } from "reshake"
 
 function ThePast(){
     return (
-        <div style={{paddingTop:"4vw"}}>
-            <div style={{textAlign:"center"}}>
-                <h1>EXPERIENCE</h1>
+        <div>
+        <div style={{textAlign:"center"}}>
+                <h1 style={{textDecoration:"underline"}}>EXPERIENCE</h1>
             </div>
-            <div style={{display:"flex", justifyContent:"center"}}>
-                <div style={{display:"flex", flexDirection:"column", alignContent:"center", }}>
-                    <div className="xpRow">
-                        <div>
-                            <div className="pokeHolder">
-                                <Shake h={0} r={0} v={60} dur={2000}><img className="xpPoke" src={lugia}/></Shake>
-                            </div>
-                        </div>
-                        <div style={{display:"flex", width:"70%", flexDirection:"column"}}>
-                            <h3>ALUMNI CAREER COACH</h3>
-                            <p>Current</p>
-                            <p>After graduating from Code Platoon I was offered the ability to become a Career Coach for future Cohorts. Needless to say I hopped on the opportunity
-                                to give whatever help I could to those in the same path I've had to go through.
-                            </p>
-                        </div>
-                    </div>
+        <div style={{paddingTop:"4vw", width:"75%"}}>
+            
+            <div style={{display:"flex", justifyContent:"center", width:"100%", textAlign:"center"}}>
+                <div style={{display:"flex", flexDirection:"column", alignContent:"center", justifyContent:"center", width:"70%", textAlign:"center"}}>
                     <div className="xpRow">
                         <div style={{display:"flex", width:"70%", flexDirection:"column"}}>
                             <h3>TEACHER'S ASSISTANT</h3>
@@ -71,7 +59,7 @@ function ThePast(){
                     </div>
                 </div>
             </div>
-        </div>
+        </div></div>
     )
 }
 

@@ -25,9 +25,10 @@ function FindPokemon({user}){
         setFoundData(!foundData)
     }
     
-    const savePokemon = (name, nickName, move_one, move_two, move_three, move_four) =>{
+    const savePokemon = (name, nickName, move_one, move_two, move_three, move_four, picture) =>{
         try{
             name= message
+            picture = pokemon["sprites"]["front_default"]
             move_one = document.getElementById("move_one").innerHTML
             move_two = document.getElementById("move_two").innerHTML
             move_three = document.getElementById("move_three").innerHTML
@@ -40,7 +41,8 @@ function FindPokemon({user}){
                 move_one: move_one,
                 move_two: move_two,
                 move_three: move_three,
-                move_four: move_four
+                move_four: move_four,
+                picture: picture
             }).then((response)=>{
                 console.log(response)
                 setFoundData(!foundData)
@@ -53,9 +55,10 @@ function FindPokemon({user}){
         }
     }
 
+    
     return(
         <div className="insideCard">
-            <h2>BUILD A TEAM</h2>
+            <h2 style={{textDecoration:"underline"}}>BUILD A TEAM</h2>
             {foundData ? <p></p>:
             <div>
                 <div style={{display:"flex", justifyContent:"center"}} >

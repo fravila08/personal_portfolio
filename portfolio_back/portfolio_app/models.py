@@ -25,4 +25,5 @@ class MyPokemon(models.Model):
     move_two = models.CharField(max_length=250, null=True)
     move_three = models.CharField(max_length=250, null=True)
     move_four = models.CharField(max_length=250, null=True)
+    picture = models.CharField(max_length=250, default="none")
     user = models.ForeignKey(AppUser, on_delete=models.CASCADE)

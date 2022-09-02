@@ -1,16 +1,10 @@
-import http
-from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import HttpResponse, JsonResponse
 from django.contrib.auth import authenticate, login, logout
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.core import serializers
-from dotenv import load_dotenv
 from .models import *
-import json
-import requests
-import os
 
 
 
@@ -81,7 +75,8 @@ def savePokemon(request):
         move_two=request.data["move_two"]
         move_three=request.data["move_three"]
         move_four=request.data["move_four"]
-        newPokemon= MyPokemon.objects.create(user=user, name = name, nickname = nickname, move_one = move_one, move_two = move_two, move_three = move_three, move_four = move_four)
+        picture= request.data["picture"]
+        newPokemon= MyPokemon.objects.create(user=user, name = name, nickname = nickname, move_one = move_one, move_two = move_two, move_three = move_three, move_four = move_four, picture = picture)
         newPokemon.save()
         return Response({"success":"you saved a new pokemon"})
     except Exception as e:

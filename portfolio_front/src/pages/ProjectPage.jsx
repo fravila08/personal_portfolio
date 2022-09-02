@@ -150,7 +150,7 @@ function MyProjects({user}){
                             <Accordion.Body>
                                 
 
-                            <Accordion>
+                            <Accordion defaultActiveKey="1">
                                 <Accordion.Item eventKey="0">
                                     <Accordion.Header>Restaurant Menu</Accordion.Header>
                                     <Accordion.Body>
