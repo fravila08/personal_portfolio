@@ -5,7 +5,7 @@ import { Shake } from "reshake"
 import Accordion from 'react-bootstrap/Accordion';
 import FindPokemon from "../components/findPoke";
 
-function MyProjects({user, setModalShow, setNeedRelease}){
+function MyProjects({user, setModalShow, setNeedRelease, setShowCascade}){
     const [pokemon, setPokemon]=useState([])
     const [show, setShow]= useState(false)
     const pokemontList=['jolteon', 'mewtwo', 'dragonite', 'kadabra', 'blastoise', 'tyranitar']
@@ -27,7 +27,7 @@ function MyProjects({user, setModalShow, setNeedRelease}){
         console.log(badge)
         if (badge.data < 3 && badge.data == 2){
             axios.put('badges').then((response)=>{console.log(response)})
-            alert("New badge unlocked")
+            alert("new badge")
         }
     }
 
@@ -56,13 +56,13 @@ function MyProjects({user, setModalShow, setNeedRelease}){
             </div>
             <div className="cards">
                 <div className="leftCard">
-                    <FindPokemon user={user} setModalShow={setModalShow} setNeedRelease={setNeedRelease} />
+                    <FindPokemon user={user} setModalShow={setModalShow} setNeedRelease={setNeedRelease} setShowCascade={setShowCascade}/>
                 </div>
                 <div className="middleCard">
                     <h1 style={{textDecoration:"underline"}}>Certificates & Projects</h1>
                     <Accordion defaultActiveKey="1" >
                         <Accordion.Item eventKey="0">
-                            <Accordion.Header onClick={newBadge}>Certificates</Accordion.Header>
+                            <Accordion.Header onClick={newBadgeTwo}>Certificates</Accordion.Header>
                             <Accordion.Body>
                             <Accordion>
                                 <Accordion.Item eventKey="0">
@@ -183,7 +183,7 @@ function MyProjects({user, setModalShow, setNeedRelease}){
                                     project API to create random items from search bar. This project clearly demonstrates
                                     Django's extends functionality in templates.
                                     <br/>
-                                    <a href="#" onClick={newBadgeTwo}>Check Me Out</a>
+                                    <a href="#" onClick={newBadge}>Check Me Out</a>
                                     </Accordion.Body>
                                 </Accordion.Item>
                                 <Accordion.Item eventKey="2">

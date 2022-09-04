@@ -3,7 +3,7 @@ import axios from "axios";
 import pokeBall from "../images/pokeballs/pokeBall.png"
 import { useEffect } from "react";
 
-function FindPokemon({user, setModalShow, setNeedRelease}){
+function FindPokemon({user, setModalShow, setNeedRelease, setShowCascade}){
 
     const [pokemon, setPokemon] = useState([])
 
@@ -24,7 +24,7 @@ function FindPokemon({user, setModalShow, setNeedRelease}){
     }
     
     const savePokemon = (name, nickName, move_one, move_two, move_three, move_four, picture) =>{
-        newBadge()
+        
         try{
             name= pokemon["name"]
             picture = pokemon["sprites"]["front_default"]
@@ -48,6 +48,7 @@ function FindPokemon({user, setModalShow, setNeedRelease}){
                 }
                 else{
                     setFoundData(!foundData)
+                    newBadge()
                     setModalShow(true)
                 }
             })
@@ -64,7 +65,7 @@ function FindPokemon({user, setModalShow, setNeedRelease}){
         console.log(badge)
         if (badge.data < 2 && badge.data == 1){
             axios.put('badges').then((response)=>{console.log(response)})
-            alert("New badge unlocked")
+            setShowCascade(true)
         }
     }
 

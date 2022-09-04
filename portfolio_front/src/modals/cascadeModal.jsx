@@ -1,6 +1,7 @@
 import Modal from 'react-bootstrap/Modal';
+import cascade from "../images/badges/cascade.png"
 
-function MyVerticallyCenteredModal(props) {
+function CascadeBadge(props) {
     return (
       <Modal
         {...props}
@@ -10,21 +11,20 @@ function MyVerticallyCenteredModal(props) {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter" style={{color:"green"}}>
-            You Captured a Pokemon
+            NEW BADGE
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <h4>Congratulations!!!</h4>
-          <p>
-            You have added a pokemon into your team! To see your team click on 
-            "My Profile" on the upper right hand corner. 
-          </p>
+          <div style={{display:"flex"}}>
+            <img src={cascade} style={{height:"15vh"}} />
+            <p>You have unlocked the Cascade Badge! There are more Badges 
+                hidden through out the site. Look through all the features to unlock them all.
+            </p>
+          </div>
         </Modal.Body>
-        <Modal.Footer style={{color:"red", textDecoration:"underline"}}>
-          <p>You can only hold 6 Pokemon in your party.</p>
-        </Modal.Footer>
       </Modal>
     );
   }
 
-  export default MyVerticallyCenteredModal;
+  export default CascadeBadge;

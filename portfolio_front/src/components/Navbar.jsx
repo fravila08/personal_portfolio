@@ -5,14 +5,14 @@ import pokeBall from "../images/pokeballs/pokeBall.png"
 import ash from "../images/pokemon/ash.png"
 import { Shake } from "reshake"
 
-function NavBaar(){
+function NavBaar({setShowBoulder}){
 
     const newBadge = async () =>{
         const badge= await axios.get('badges')
         console.log(badge)
         if (badge.data < 1){
             axios.put('badges').then((response)=>{console.log(response)})
-            alert("New badge unlocked")
+            setShowBoulder(true)
         }
     }
     const newBadgeTwo = async () =>{

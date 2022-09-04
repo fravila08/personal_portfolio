@@ -15,6 +15,8 @@ import MyProfile from './pages/MyProfile';
 import MyVerticallyCenteredModal from './components/modals';
 import ReleaseModal from './components/releaseModal';
 import NeedToRelease from './components/tooManyModal';
+import BoulderBadge from './modals/boulderModal';
+import CascadeBadge from './modals/cascadeModal';
 
 function getCookie(name) {
   let cookieValue = null;
@@ -57,7 +59,9 @@ function App() {
 
   const [modalShow, setModalShow] = useState(false);
   const [releaseShow, setReleaseShow]= useState(false);
-  const [needRelease, setNeedRelease]=useState(false)
+  const [needRelease, setNeedRelease]=useState(false);
+  const [showBoulder, setShowBoulder]= useState(false);
+  const [showCascade, setShowCascade]=useState(false)
   
   return (
     <div className="App" >      
@@ -98,7 +102,7 @@ function App() {
             <span id="letter22" className='letters'>o</span>
           </div>
         </div>
-        <NavBaar user={user} />
+        <NavBaar user={user} setShowBoulder={setShowBoulder} />
         <MyVerticallyCenteredModal
         show={modalShow}
         onHide={() => setModalShow(false)}
@@ -116,12 +120,20 @@ function App() {
         show={needRelease}
         onHide={() => setNeedRelease(false)}
         />
+        <BoulderBadge 
+         show={showBoulder}
+         onHide={()=>{setShowBoulder(false)}}
+        />
+        <CascadeBadge 
+         show={showCascade}
+         onHide={()=>{setShowCascade(false)}}
+        />
       </div>
       <PokeSep />
       <Router>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/myProjects" element={<ProjectPage user={user} setModalShow={setModalShow} setNeedRelease={setNeedRelease}/>} />
+          <Route path="/myProjects" element={<ProjectPage user={user} setModalShow={setModalShow} setShowCascade={setShowCascade} setNeedRelease={setNeedRelease}/>} />
           <Route path='/thePast' element={<ThePast />} />
           <Route path='/contactMe' element={<ContactMe user={user} />} />
           <Route path='/signUp' element={<SignUp />} />
