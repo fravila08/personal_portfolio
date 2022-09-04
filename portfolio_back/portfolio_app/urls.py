@@ -10,4 +10,7 @@ urlpatterns = [
     path('curr_user', views.curr_user, name='curr_user'),
     path('profile_page', views.profile_page, name='profile_page'),
     path("savePokemon", views.savePokemon, name="savePokemon"),
+    path("getMyPokemon", views.getMyPokemon, name="getMyPokemon"),
+    path("release/<int:id>", views.release_pokemon, name='relase_pokemon'),
+    path("badges", views.badges, name='badges')
 ]

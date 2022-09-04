@@ -67,18 +67,54 @@ def profile_page(request):
     
 @api_view(["POST"])
 def savePokemon(request):
-    try:
-        user = request.user
-        name=request.data["name"]
-        nickname= request.data["nickname"]
-        move_one=request.data["move_one"]
-        move_two=request.data["move_two"]
-        move_three=request.data["move_three"]
-        move_four=request.data["move_four"]
-        picture= request.data["picture"]
-        newPokemon= MyPokemon.objects.create(user=user, name = name, nickname = nickname, move_one = move_one, move_two = move_two, move_three = move_three, move_four = move_four, picture = picture)
-        newPokemon.save()
-        return Response({"success":"you saved a new pokemon"})
-    except Exception as e:
-        print(e)
-        return Response({"failure":"something went wrong in adding a new pokemon"})
+    curr_user= AppUser.objects.get(id = request.user.id)
+    print(curr_user.number_of_pokemon)
+    if curr_user.number_of_pokemon < 6:
+        try:
+            user = request.user
+            name=request.data["name"]
+            move_one=request.data["move_one"]
+            move_two=request.data["move_two"]
+            move_three=request.data["move_three"]
+            move_four=request.data["move_four"]
+            picture= request.data["picture"]
+            newPokemon= MyPokemon.objects.create(user=user, name = name, move_one = move_one, move_two = move_two, move_three = move_three, move_four = move_four, picture = picture)
+            newPokemon.save()
+            number= request.user.number_of_pokemon
+            number +=1
+            curr_user.number_of_pokemon = number
+            curr_user.save()
+            print(curr_user.number_of_pokemon)
+            return Response({"success":"you saved a new pokemon"})
+        except Exception as e:
+            print(e)
+            return Response({"failure":"something went wrong in adding a new pokemon"})
+    else:
+        return Response(False)
+    
+@api_view(['GET'])
+def getMyPokemon(request):
+    my_team = MyPokemon.objects.filter(user = request.user).values()
+    return Response(my_team)
+
+@api_view(['DELETE'])
+def release_pokemon(request, id):
+    currUser = AppUser.objects.get(id = request.user.id)
+    currUser.number_of_pokemon = currUser.number_of_pokemon - 1
+    currUser.save()
+    pokemonToRelease= MyPokemon.objects.get(id = id)
+    pokemonToRelease.delete()
+    print(currUser.number_of_pokemon)
+    return Response({"success": "you released a pokemon"})
+
+@api_view(['PUT', "GET"])
+def badges(request):
+    currUser = AppUser.objects.get(id = request.user.id)
+    if request.method == "PUT":
+        currUser.number_of_badges +=1
+        currUser.save()
+        print(currUser.number_of_badges)
+        return Response(currUser.number_of_badges)
+    if request.method == "GET":
+        return Response(currUser.number_of_badges)
+    

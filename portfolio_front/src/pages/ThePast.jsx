@@ -6,11 +6,11 @@ import { Shake } from "reshake"
 
 function ThePast(){
     return (
-        <div>
+        <div style={{marginTop:"6vh"}} >
         <div style={{textAlign:"center"}}>
                 <h1 style={{textDecoration:"underline"}}>EXPERIENCE</h1>
             </div>
-        <div style={{paddingTop:"4vw", width:"75%"}}>
+        <div style={{paddingTop:"4vw", width:"70%"}}>
             
             <div style={{display:"flex", justifyContent:"center", width:"100%", textAlign:"center"}}>
                 <div style={{display:"flex", flexDirection:"column", alignContent:"center", justifyContent:"center", width:"70%", textAlign:"center"}}>

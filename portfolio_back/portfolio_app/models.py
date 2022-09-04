@@ -14,6 +14,8 @@ class AppUser(AbstractUser):
     profile_picture = models.CharField(
         max_length=250, default='https://icon-library.com/images/default-profile-icon/default-profile-icon-24.jpg')
     residing_state = models.CharField(max_length=250, null=True)
+    number_of_pokemon = models.IntegerField(default=0)
+    number_of_badges = models.IntegerField(default=0)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []

@@ -12,6 +12,9 @@ import SignUp from './pages/SignUp';
 import SignIn from './pages/SignIn';
 import axios from 'axios';
 import MyProfile from './pages/MyProfile';
+import MyVerticallyCenteredModal from './components/modals';
+import ReleaseModal from './components/releaseModal';
+import NeedToRelease from './components/tooManyModal';
 
 function getCookie(name) {
   let cookieValue = null;
@@ -34,7 +37,6 @@ axios.defaults.headers.common['X-CSRFToken']= csrftoken
 
 function App() {
   const [user, setUser] = useState(null)
-  const [trigger, setTrigger]= useState(false)
 
   function signOut(){
     event.preventDefault()
@@ -53,6 +55,9 @@ function App() {
     curr_user()
   }, [])
 
+  const [modalShow, setModalShow] = useState(false);
+  const [releaseShow, setReleaseShow]= useState(false);
+  const [needRelease, setNeedRelease]=useState(false)
   
   return (
     <div className="App" >      
@@ -93,18 +98,35 @@ function App() {
             <span id="letter22" className='letters'>o</span>
           </div>
         </div>
-        <NavBaar />
+        <NavBaar user={user} />
+        <MyVerticallyCenteredModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+        />
+        <ReleaseModal
+        user={user}
+        show={releaseShow}
+        onHide={() => {
+          setReleaseShow(false)
+          window.location.reload()
+        }}
+        />
+        <NeedToRelease
+        user={user}
+        show={needRelease}
+        onHide={() => setNeedRelease(false)}
+        />
       </div>
       <PokeSep />
       <Router>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/myProjects" element={<ProjectPage user={user}/>} />
+          <Route path="/myProjects" element={<ProjectPage user={user} setModalShow={setModalShow} setNeedRelease={setNeedRelease}/>} />
           <Route path='/thePast' element={<ThePast />} />
-          <Route path='/contactMe' element={<ContactMe />} />
+          <Route path='/contactMe' element={<ContactMe user={user} />} />
           <Route path='/signUp' element={<SignUp />} />
           <Route path='/signIn' element={<SignIn />} />
-          <Route path='/myProfile' element={<MyProfile user={user}/>} />
+          <Route path='/myProfile' element={<MyProfile user={user} setReleaseShow={setReleaseShow}/>} />
         </Routes>
       </Router>
     </div>

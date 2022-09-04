@@ -124,18 +124,21 @@ html{
     justify-content: space-around;
     width: 90vw;
     padding-top: 10vh;
+    flex-wrap: wrap;
 }
 
 .leftCard{
+    min-width: fit-content;
     width: 25vw;
     border: 1vw solid black;
     border-radius: 2vw;
     height: auto;
+    padding-bottom: 2vh;
 }
 
 .middleCard{
     height: auto;
-    width: 25vw;
+    width: 27vw;
     border: 1vw solid black;
     border-radius: 2vw;
 }
@@ -254,7 +257,7 @@ html{
 }
 
 .trainerCard{
-    min-width: 60vw;
+    min-width: 70vw;
     border: solid black 2px;
     border-radius: 10px;
     background-color: rgb(245, 245, 225);
@@ -267,6 +270,7 @@ html{
     margin-top: 2vh;
     height: 8vh;
     margin-bottom: 1vh;
+    font-size: 3vh;
 }
 .idOnCard{
     background-color: white;
@@ -293,7 +297,7 @@ ul{
 
 .leftSide ul li{
     height: 5vh;
-    font-size: 20px;
+    font-size: 2vh;
 }
 .bulletCircle{
     height: 4vh;
@@ -307,18 +311,54 @@ ul{
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 
 .badges{
     background-color: rgb(202, 202, 202);
-    height: 9vh;
+    min-height: 9vh;
     color:white;
     margin-bottom: 2vh;
+    padding-bottom: 1vh;
 }
 
 .badgeBorder{
-    height: 5vh;
-    width: 3vw;
+    min-height: 5vh;
+    min-width: 3vw;
     border: solid white 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+.pokemonTeam{
+    margin-top: 6vh;
+    margin-bottom: 3vh;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.pokeCardTeam{
+    display: flex;
+    padding: 10px;
+    border: black 2px solid;
+    border-radius: 10px;
+    min-height: 20vh;
+    margin-top: 2vh;
+}
+
+.pokeCardTeam ul li{
+    list-style-type: disc;
+}
+
+.signup{
+    width: 50vw;
+}
+
+button{
+    font-weight: 700;
+    padding: 0;
+    border: none;
+    background: none;
+}

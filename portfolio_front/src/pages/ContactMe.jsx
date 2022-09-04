@@ -3,8 +3,20 @@ import masterBall from "../images/pokeballs/masterBall.png"
 import ultraBall from "../images/pokeballs/ultraBall.png"
 import greatBall from "../images/pokeballs/greatBall.png"
 import {Shake} from "reshake"
+import axios from "axios"
 
-function ContactMe(){
+function ContactMe({user}){
+
+    const newBadge = async () =>{
+        const badge= await axios.get('badges')
+        console.log(badge)
+        if (badge.data < 7 && badge.data == 6){
+            axios.put('badges').then((response)=>{console.log(response)})
+            alert("New badge unlocked")
+        }
+    }
+
+
     return(
         <div style={{paddingTop:"5vw"}}>
             <div style={{textAlign:"center"}}>
@@ -18,13 +30,13 @@ function ContactMe(){
                             <h5>EMAIL:</h5><h5><a href="#">fr4v1l4@gmail.com</a></h5>
                         </div>
                     </div>
-                    <div className="contactRow">
+                    <div className="contactRow"   onClick={newBadge}>
                         <Shake><img className="ballRow" src={ultraBall}/></Shake>
                         <div style={{display:"flex", width:"70%", justifyContent:"space-between"}}>
-                            <h5>LINKEDIN:</h5><h5><a href="https://linkedin.com/in/francisco-r-avila">https://www.linkedin.com/in/francisco-r-avila</a></h5>
+                            <h5>LINKEDIN:</h5><h5><a href="https://linkedin.com/in/francisco-r-avila">CONNECT</a></h5>
                         </div>
                     </div>
-                    <div className="contactRow">
+                    <div className="contactRow" >
                         <Shake><img className="ballRow" src={greatBall}/></Shake>
                         <div style={{display:"flex", width:"70%", justifyContent:"space-between"}}>
                             <h5>GITHUB:</h5><h5><a href="https://github.com/fravila08">MY REPOSITORIES</a></h5>

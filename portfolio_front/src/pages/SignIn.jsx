@@ -12,9 +12,11 @@ function SignIn() {
       console.log('response from server: ', response)
       window.location.href = '/'
     })
+    
   }
   return (
-        <div className="login">
+      <div style={{display:"flex", justifyContent:"center", marginTop:"20vh", paddingBottom:"10vh"}}>
+        <div className="signup">
           <form onSubmit={signIn}>
             <label htmlFor="email">Email</label>
             <input id='emailSignIn'
@@ -33,6 +35,7 @@ function SignIn() {
             <a href="#/SignUp">Create New Account</a>
           </form>
         </div>
+      </div>
   )
 }
 

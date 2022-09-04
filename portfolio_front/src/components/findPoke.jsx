@@ -1,39 +1,37 @@
 import {useState} from "react"
 import axios from "axios";
 import pokeBall from "../images/pokeballs/pokeBall.png"
+import { useEffect } from "react";
 
-function FindPokemon({user}){
-    const [message, setMessage] = useState('');
+function FindPokemon({user, setModalShow, setNeedRelease}){
 
     const [pokemon, setPokemon] = useState([])
 
     const [foundData, setFoundData]= useState(false)
 
-    const [nickname, setNickname]= useState('')
     
-    const handleChange = event => {
-    setMessage((event.target.value).toLowerCase());
-    };
-
-    const handleNickname = event => {
-        setNickname((event.target.value).toLowerCase());
-        };
-
     const  getPokemon= async ()=>{
-        const newPokemon= await axios.request(`https://pokeapi.co/api/v2/pokemon/${message}`)
-        setPokemon(newPokemon.data)
-        setFoundData(!foundData)
+        try{
+            const randomNumber = Math.floor(Math.random()*899)
+            const newPokemon= await axios.request(`https://pokeapi.co/api/v2/pokemon/${randomNumber}`)
+            console.log(newPokemon.data)
+            setPokemon(newPokemon.data)
+            setFoundData(!foundData) 
+        }
+        catch{
+            alert("Pokemon does not exist")
+        }
     }
     
     const savePokemon = (name, nickName, move_one, move_two, move_three, move_four, picture) =>{
+        newBadge()
         try{
-            name= message
+            name= pokemon["name"]
             picture = pokemon["sprites"]["front_default"]
             move_one = document.getElementById("move_one").innerHTML
             move_two = document.getElementById("move_two").innerHTML
             move_three = document.getElementById("move_three").innerHTML
             move_four = document.getElementById("move_four").innerHTML
-            nickName = nickname
 
             axios.post("/savePokemon", {
                 name: name,
@@ -44,14 +42,29 @@ function FindPokemon({user}){
                 move_four: move_four,
                 picture: picture
             }).then((response)=>{
-                console.log(response)
-                setFoundData(!foundData)
-                alert("Your Pokemon was saved")
+                if (response.data === false){
+                    setNeedRelease(true)
+                    setFoundData(!foundData)
+                }
+                else{
+                    setFoundData(!foundData)
+                    setModalShow(true)
+                }
             })
         }
         catch(e){
             console.log(e)
             alert("Please find a Pokemon before trying to save.")
+        }
+        
+    }
+
+    const newBadge = async () =>{
+        const badge= await axios.get('badges')
+        console.log(badge)
+        if (badge.data < 2 && badge.data == 1){
+            axios.put('badges').then((response)=>{console.log(response)})
+            alert("New badge unlocked")
         }
     }
 
@@ -61,46 +74,49 @@ function FindPokemon({user}){
             <h2 style={{textDecoration:"underline"}}>BUILD A TEAM</h2>
             {foundData ? <p></p>:
             <div>
-                <div style={{display:"flex", justifyContent:"center"}} >
-                    <input type="text" placeholder="NAME" onChange={handleChange} style={{width:"10vw"}}/>
-                    <input type="text" placeholder="DESIRED NICKNAME" style={{width:"90%"}} onChange={handleNickname}/>
-                </div>
-                <br/>
-                <div style={{display:"flex", justifyContent:"center"}}><button onClick={getPokemon}>FIND DATA</button></div>
+                <div style={{display:"flex", justifyContent:"center"}}><button onClick={getPokemon} style={{color:"green", border:"solid green 2px", padding:"10px", borderRadius:"10px"}}>FIND POKEMON</button></div>
             </div>}
             <div className="pokeCard">
                 <div className="pokeIcon">
-                    { foundData ? <img src={pokemon["sprites"]["front_default"]}  style={{width:"20vw"}}/> : <img src={pokeBall} style={{width:"8vw"}} />}
+                    { foundData ?  pokemon["sprites"] ?<img src={pokemon["sprites"]["front_default"]}  style={{width:"20vw"}}/> : <p></p> : <img src={pokeBall} style={{width:"8vw"}} />}
                 </div>
                 <div style={{width:"100%", display:"flex", justifyContent:"center", flexDirection:"column", alignItems:"center"}}>
-                    {foundData ? <h5 style={{fontFamily:'Pokemon Solid'}}>{pokemon["name"].toUpperCase()}</h5> : <p>Who are you looking for?</p>}
+                    {foundData ? pokemon["sprites"] ? <h5 style={{fontFamily:'Pokemon Solid'}}>{pokemon["name"].toUpperCase()}</h5> : <p></p> : <p>Who will choose you?</p>}
                 </div>
                 <div style={{width:"100%", display:"flex", flexDirection:"column"}}>
                     <div style={{display:"flex", justifyContent:"center", textDecoration:"underline"}}><h6>ABILITIES</h6></div>
                     <ul>
-                        {foundData ? pokemon["abilities"].map((ability)=>(<li>{ability["ability"]["name"]}</li>)): <p></p>}
+                        {foundData ? pokemon["sprites"] ? pokemon["abilities"].map((ability)=>(<li>{ability["ability"]["name"]}</li>)): <p></p> : <p></p>}
                     </ul>
                 </div>
                 <div style={{width:"100%", display:"flex", flexDirection:"column"}}>
                     <div style={{display:"flex", justifyContent:"center", textDecoration:"underline"}}><h6>TYPES</h6></div>
                     <ul>
-                        {foundData ? pokemon["types"].map((type)=>(<li>{type["type"]["name"]}</li>)): <p></p>}
+                        {foundData ? pokemon["sprites"] ? pokemon["types"].map((type)=>(<li>{type["type"]["name"]}</li>)) : <p></p> : <p></p>}
                     </ul>
                 </div>
                 <div style={{width:"100%", display:"flex", flexDirection:"column"}}>
                    <div style={{display:"flex", justifyContent:"center", textDecoration:"underline"}}><h6>MOVES</h6></div>
                    
-                   {foundData ?
+                   {foundData ? pokemon["sprites"] ?
                     <ul>
                         <li id="move_one">{pokemon["moves"][Math.floor(Math.random() * pokemon["moves"].length)]["move"]["name"]}</li>
                         <li id="move_two">{pokemon["moves"][Math.floor(Math.random() * pokemon["moves"].length)]["move"]["name"]}</li>
                         <li id="move_three">{pokemon["moves"][Math.floor(Math.random() * pokemon["moves"].length)]["move"]["name"]}</li>
                         <li id="move_four">{pokemon["moves"][Math.floor(Math.random() * pokemon["moves"].length)]["move"]["name"]}</li>
-                    </ul>:<p></p>}
+                    </ul> : <p></p> :<p></p>}
                 </div>
                 
-                <div style={{width:"100%", display:"flex", justifyContent:"center"}}>
-                    {user ? <button onClick={savePokemon}>SAVE</button> : <a href="#/signIn">Log in to save your pokemon</a>}
+                <div style={{width:"100%", display:"flex", justifyContent:"center", paddingBottom:"2vh"}}>
+                    {user ?
+                    <div style={{display:"flex", justifyContent:"space-around", width:"100%"}}>
+                        {foundData ? 
+                        <div style={{display:"flex", justifyContent:"space-between"}}>
+                            <button style={{color:"green", border:"solid green 2px", padding:"5px", borderRadius:"10px"}}  onClick={savePokemon}>CAPTURE</button>
+                            <button style={{color:"red", border:"solid red 2px", padding:"5px", borderRadius:"10px"}} onClick={()=>setFoundData(false)}>RUN AWAY</button>
+                        </div>:<p></p>}
+                    </div> : 
+                    <a href="#/signIn">Log in to save your pokemon</a>}
                 </div>
             </div>
         </div>

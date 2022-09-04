@@ -5,7 +5,7 @@ import { Shake } from "reshake"
 import Accordion from 'react-bootstrap/Accordion';
 import FindPokemon from "../components/findPoke";
 
-function MyProjects({user}){
+function MyProjects({user, setModalShow, setNeedRelease}){
     const [pokemon, setPokemon]=useState([])
     const [show, setShow]= useState(false)
     const pokemontList=['jolteon', 'mewtwo', 'dragonite', 'kadabra', 'blastoise', 'tyranitar']
@@ -22,6 +22,23 @@ function MyProjects({user}){
             })
         },[])
     
+    const newBadge = async () =>{
+        const badge= await axios.get('badges')
+        console.log(badge)
+        if (badge.data < 3 && badge.data == 2){
+            axios.put('badges').then((response)=>{console.log(response)})
+            alert("New badge unlocked")
+        }
+    }
+
+    const newBadgeTwo = async () =>{
+        const badge= await axios.get('badges')
+        console.log(badge)
+        if (badge.data < 4 && badge.data == 3){
+            axios.put('badges').then((response)=>{console.log(response)})
+            alert("New badge unlocked")
+        }
+    }
         
 
     return(
@@ -31,21 +48,21 @@ function MyProjects({user}){
                 {show ? pokemon.map((poke)=>(
                     <div>
                         <div style={{display:"flex", justifyContent:"center", alignItems:"center"}}>
-                            <img src={pokeBall} style={{position:"absolute", width:"6vw", zIndex:"0"}}/>
-                            <Shake style={{zIndex:"2"}}><img src={poke} style={{zIndex:"1"}}/></Shake>
+                            <img src={pokeBall} style={{position:"absolute", height:"6vw", zIndex:"0"}}/>
+                            <Shake style={{zIndex:"2"}}><img style={{height:"15vh", zIndex:"2"}} src={poke} /></Shake>
                         </div>
                     </div>
                 )): <p></p>}
             </div>
             <div className="cards">
                 <div className="leftCard">
-                    <FindPokemon user={user}/>
+                    <FindPokemon user={user} setModalShow={setModalShow} setNeedRelease={setNeedRelease} />
                 </div>
                 <div className="middleCard">
                     <h1 style={{textDecoration:"underline"}}>Certificates & Projects</h1>
-                    <Accordion defaultActiveKey="1">
+                    <Accordion defaultActiveKey="1" >
                         <Accordion.Item eventKey="0">
-                            <Accordion.Header>Certificates</Accordion.Header>
+                            <Accordion.Header onClick={newBadge}>Certificates</Accordion.Header>
                             <Accordion.Body>
                             <Accordion>
                                 <Accordion.Item eventKey="0">
@@ -165,6 +182,8 @@ function MyProjects({user}){
                                     Django and PostgreSQL ran ecommerce application working with the noun 
                                     project API to create random items from search bar. This project clearly demonstrates
                                     Django's extends functionality in templates.
+                                    <br/>
+                                    <a href="#" onClick={newBadgeTwo}>Check Me Out</a>
                                     </Accordion.Body>
                                 </Accordion.Item>
                                 <Accordion.Item eventKey="2">

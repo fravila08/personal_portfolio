@@ -21,7 +21,11 @@ function SignUp() {
       console.log('response from server: ', response.data.message)
     })
   }
+
+
+  
   return (
+        <div style={{display:"flex", justifyContent:"center", marginTop:"20vh", paddingBottom:"10vh"}}>
         <div className="signup">
           <form onSubmit={signUp}>
             <label htmlFor="firstName">First Name </label>
@@ -58,6 +62,7 @@ function SignUp() {
             <p>Already have an Account?</p>
             <a href="#/signin">LOG IN</a>
           </form>
+        </div>
         </div>
   )
 }
