@@ -5,14 +5,13 @@ import greatBall from "../images/pokeballs/greatBall.png"
 import {Shake} from "reshake"
 import axios from "axios"
 
-function ContactMe({user}){
+function ContactMe({setShowVolcano}){
 
     const newBadge = async () =>{
         const badge= await axios.get('badges')
-        console.log(badge)
         if (badge.data < 7 && badge.data == 6){
-            axios.put('badges').then((response)=>{console.log(response)})
-            alert("New badge unlocked")
+            axios.put('badges')
+            setShowVolcano(true)
         }
     }
 
@@ -33,7 +32,7 @@ function ContactMe({user}){
                     <div className="contactRow"   onClick={newBadge}>
                         <Shake><img className="ballRow" src={ultraBall}/></Shake>
                         <div style={{display:"flex", width:"70%", justifyContent:"space-between"}}>
-                            <h5>LINKEDIN:</h5><h5><a href="https://linkedin.com/in/francisco-r-avila">CONNECT</a></h5>
+                            <h5>LINKEDIN:</h5><h5><a target="_blank" href="https://linkedin.com/in/francisco-r-avila">CONNECT</a></h5>
                         </div>
                     </div>
                     <div className="contactRow" >

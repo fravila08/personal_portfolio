@@ -5,7 +5,7 @@ import { Shake } from "reshake"
 import Accordion from 'react-bootstrap/Accordion';
 import FindPokemon from "../components/findPoke";
 
-function MyProjects({user, setModalShow, setNeedRelease, setShowCascade}){
+function MyProjects({user, setModalShow, setNeedRelease, setShowCascade, setShowThunder, setShowRainbow}){
     const [pokemon, setPokemon]=useState([])
     const [show, setShow]= useState(false)
     const pokemontList=['jolteon', 'mewtwo', 'dragonite', 'kadabra', 'blastoise', 'tyranitar']
@@ -24,19 +24,17 @@ function MyProjects({user, setModalShow, setNeedRelease, setShowCascade}){
     
     const newBadge = async () =>{
         const badge= await axios.get('badges')
-        console.log(badge)
         if (badge.data < 3 && badge.data == 2){
-            axios.put('badges').then((response)=>{console.log(response)})
-            alert("new badge")
+            axios.put('badges')
+            setShowThunder(true)
         }
     }
 
     const newBadgeTwo = async () =>{
         const badge= await axios.get('badges')
-        console.log(badge)
         if (badge.data < 4 && badge.data == 3){
-            axios.put('badges').then((response)=>{console.log(response)})
-            alert("New badge unlocked")
+            axios.put('badges')
+            setShowRainbow(true)
         }
     }
         

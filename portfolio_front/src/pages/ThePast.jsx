@@ -1,12 +1,11 @@
 import zapdos from "../images/pokemon/zapdos.png";
 import articuno from "../images/pokemon/articuno.png";
 import moltres from "../images/pokemon/moltres.png";
-import lugia from "../images/pokemon/lugia.png";
 import { Shake } from "reshake"
 
 function ThePast(){
     return (
-        <div style={{marginTop:"6vh"}} >
+    <div style={{marginTop:"6vh"}} >
         <div style={{textAlign:"center"}}>
                 <h1 style={{textDecoration:"underline"}}>EXPERIENCE</h1>
             </div>
@@ -59,7 +58,8 @@ function ThePast(){
                     </div>
                 </div>
             </div>
-        </div></div>
+        </div>
+    </div>
     )
 }
 

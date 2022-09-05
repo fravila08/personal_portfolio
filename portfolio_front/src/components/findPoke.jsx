@@ -1,7 +1,6 @@
 import {useState} from "react"
 import axios from "axios";
 import pokeBall from "../images/pokeballs/pokeBall.png"
-import { useEffect } from "react";
 
 function FindPokemon({user, setModalShow, setNeedRelease, setShowCascade}){
 
@@ -14,7 +13,6 @@ function FindPokemon({user, setModalShow, setNeedRelease, setShowCascade}){
         try{
             const randomNumber = Math.floor(Math.random()*899)
             const newPokemon= await axios.request(`https://pokeapi.co/api/v2/pokemon/${randomNumber}`)
-            console.log(newPokemon.data)
             setPokemon(newPokemon.data)
             setFoundData(!foundData) 
         }
@@ -54,7 +52,6 @@ function FindPokemon({user, setModalShow, setNeedRelease, setShowCascade}){
             })
         }
         catch(e){
-            console.log(e)
             alert("Please find a Pokemon before trying to save.")
         }
         
@@ -62,9 +59,8 @@ function FindPokemon({user, setModalShow, setNeedRelease, setShowCascade}){
 
     const newBadge = async () =>{
         const badge= await axios.get('badges')
-        console.log(badge)
         if (badge.data < 2 && badge.data == 1){
-            axios.put('badges').then((response)=>{console.log(response)})
+            axios.put('badges')
             setShowCascade(true)
         }
     }

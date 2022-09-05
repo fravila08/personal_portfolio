@@ -14,7 +14,7 @@ import soul from "../images/badges/soul.png"
 import thunder from "../images/badges/thunder.png"
 import volcano from "../images/badges/volcano.png"
 
-function Myprofile({user, setReleaseShow}){
+function Myprofile({user, setReleaseShow, setShowEarth}){
     const [pokemon, setPokemon] = useState([])
     const [show, setShow] = useState(false)
     const [count, setCount]=useState(0)
@@ -31,8 +31,8 @@ function Myprofile({user, setReleaseShow}){
     
     const releasePokemon=(id)=>{
         try{
-            newBadge()
             axios.delete(`release/${id}`).then((response)=>{
+                newBadge()
                 setReleaseShow(true)
             })
             
@@ -52,13 +52,12 @@ function Myprofile({user, setReleaseShow}){
     },[])
 
     
-    console.log(count)
+    
     const newBadge = async () =>{
         const badge= await axios.get('badges')
-        console.log(badge)
         if (badge.data < 8 && badge.data == 7){
-            axios.put('badges').then((response)=>{console.log(response)})
-            alert("New badge unlocked")
+            axios.put('badges')
+            setShowEarth(true)
         }
     }
     

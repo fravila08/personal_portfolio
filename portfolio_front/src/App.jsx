@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import reactLogo from './assets/react.svg'
 import './App.css'
 import NavBaar from './components/Navbar'
 import {HashRouter as Router, Routes, Route} from "react-router-dom";
@@ -17,6 +16,13 @@ import ReleaseModal from './components/releaseModal';
 import NeedToRelease from './components/tooManyModal';
 import BoulderBadge from './modals/boulderModal';
 import CascadeBadge from './modals/cascadeModal';
+import ThunderBadge from './modals/thunderModal';
+import RainbowBadge from './modals/rainbowModal';
+import SoulBadge from './modals/soulModal';
+import MarshBadge from './modals/marshModal';
+import VolcanoBadge from './modals/volcanoModal';
+import EarthBadge from './modals/earthModal';
+
 
 function getCookie(name) {
   let cookieValue = null;
@@ -50,7 +56,6 @@ function App() {
   async function curr_user() {
     const response = await axios.get('profile_page')
     setUser(response.data)
-    // console.log(response.data)
   }
 
   useEffect(() => {
@@ -61,7 +66,13 @@ function App() {
   const [releaseShow, setReleaseShow]= useState(false);
   const [needRelease, setNeedRelease]=useState(false);
   const [showBoulder, setShowBoulder]= useState(false);
-  const [showCascade, setShowCascade]=useState(false)
+  const [showCascade, setShowCascade]=useState(false);
+  const [showThunder, setShowThunder]=useState(false);
+  const [showRainbow, setShowRainbow]=useState(false);
+  const [showSoul, setShowSoul]=useState(false)
+  const [showMarsh, setShowMarsh]=useState(false);
+  const [showVolcano, setShowVolcano]=useState(false);
+  const [showEarth, setShowEarth]=useState(false)
   
   return (
     <div className="App" >      
@@ -102,7 +113,7 @@ function App() {
             <span id="letter22" className='letters'>o</span>
           </div>
         </div>
-        <NavBaar user={user} setShowBoulder={setShowBoulder} />
+        
         <MyVerticallyCenteredModal
         show={modalShow}
         onHide={() => setModalShow(false)}
@@ -128,17 +139,44 @@ function App() {
          show={showCascade}
          onHide={()=>{setShowCascade(false)}}
         />
+        <ThunderBadge 
+         show = {showThunder}
+         onHide={()=>{setShowThunder(false)}}
+        />
+        <RainbowBadge 
+         show={showRainbow}
+         onHide= {()=>{setShowRainbow(false)}}
+        />
+        <SoulBadge 
+         show={showSoul}
+         onHide={()=>{setShowSoul(false)}}
+        />
+        <MarshBadge 
+         show={showMarsh}
+         onHide={()=>{setShowMarsh(false)}}
+        />
+        <VolcanoBadge 
+         show={showVolcano}
+         onHide={()=>{setShowVolcano(false)}}
+        />
+        <EarthBadge 
+         show={showEarth}
+         onHide={()=>{setShowEarth(false)}}
+        />
+        
+        <NavBaar user={user} setShowBoulder={setShowBoulder} setShowSoul={setShowSoul} setShowMarsh={setShowMarsh}  />
       </div>
       <PokeSep />
       <Router>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/myProjects" element={<ProjectPage user={user} setModalShow={setModalShow} setShowCascade={setShowCascade} setNeedRelease={setNeedRelease}/>} />
+          <Route path="/myProjects" element={<ProjectPage user={user} setModalShow={setModalShow} setShowCascade={setShowCascade} setNeedRelease={setNeedRelease} 
+          setShowThunder={setShowThunder} setShowRainbow={setShowRainbow}  />} />
           <Route path='/thePast' element={<ThePast />} />
-          <Route path='/contactMe' element={<ContactMe user={user} />} />
+          <Route path='/contactMe' element={<ContactMe user={user} setShowVolcano={setShowVolcano}/>} />
           <Route path='/signUp' element={<SignUp />} />
           <Route path='/signIn' element={<SignIn />} />
-          <Route path='/myProfile' element={<MyProfile user={user} setReleaseShow={setReleaseShow}/>} />
+          <Route path='/myProfile' element={<MyProfile user={user} setReleaseShow={setReleaseShow} setShowEarth={setShowEarth}/>} />
         </Routes>
       </Router>
     </div>
