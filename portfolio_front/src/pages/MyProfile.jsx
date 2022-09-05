@@ -67,9 +67,9 @@ function Myprofile({user, setReleaseShow, setShowEarth}){
                 {pokemon.length ? 
                 pokemon.map((poke)=>(
                     <div className="pokeCardTeam">
-                        <img src={pokeBall} style={{position:"absolute", height:"10vh", width:"5vw", zIndex:"-1"}}/>
+                        <img src={pokeBall} style={{position:"absolute", height:"10vh", zIndex:"-1"}}/>
                         <div style={{display:"flex", flexDirection:"column"}}>
-                            <img src={poke.picture} />
+                            <img className="releasePoke" src={poke.picture} />
                             <button style={{color:"red", border:"2px solid red", borderRadius:"5px"}} onClick={()=>releasePokemon(poke.id)}>RELEASE</button>
                         </div>
                         <div>
@@ -99,13 +99,11 @@ function Myprofile({user, setReleaseShow, setShowEarth}){
                     </div>
                     <div className="cardBody">
                         <div className="leftSide">
-                            <ul >
-                                <li style={{textDecoration:"underline"}} ><img className="bulletCircle" src={circle} />NAME: <strong>{user && user.first_name} {user && user.last_name}</strong></li>
-                                <li style={{display:"flex", justifyContent:"right"}}><img src={goldStar} className="star" /><img src={goldStar} className="star" /><img src={goldStar} className="star" /></li>
-                                <li ><img className="bulletCircle" src={circle} />CURRENT JOB TITLE: {user && user.job_title}</li>
-                                <li ><img className="bulletCircle" src={circle} />EMAIL: {user && user.email}</li>
-                                <li ><img className="bulletCircle" src={circle} />MEMBER SINCE: {user && user.date_joined.toString().split("T")[0]}</li>
-                            </ul>
+                            <h4 className="leftSideContent" style={{textDecoration:"underline"}} ><img className="bulletCircle" src={circle} />NAME: <strong>{user && user.first_name} {user && user.last_name}</strong></h4>
+                            <div style={{display:"flex", justifyContent:"right"}}><img src={goldStar} className="star" /><img src={goldStar} className="star" /><img src={goldStar} className="star" /></div>
+                            <h4 className="leftSideContent" ><img className="bulletCircle" src={circle} />JOB TITLE: {user && user.job_title}</h4>
+                            <h4 className="leftSideContent"><img className="bulletCircle" src={circle} />EMAIL: {user && user.email}</h4>
+                            <h4 className="leftSideContent"><img className="bulletCircle" src={circle} />MEMBER SINCE: {user && user.date_joined.toString().split("T")[0]}</h4>
                         </div>
                         <div className="rightSide">
                             <img src={trainer} style={{height:"25vh"}}/>

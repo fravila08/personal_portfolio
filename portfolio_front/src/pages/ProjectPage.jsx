@@ -42,11 +42,11 @@ function MyProjects({user, setModalShow, setNeedRelease, setShowCascade, setShow
     return(
         <div style={{paddingTop:"6vw", display:"flex", flexDirection:"column", alignItems:"center"}}>
             <h5>This is my favorite team from Fire Red</h5>
-            <div style={{textAlign:"center", display:"flex"}}>
+            <div className="myTeamHolder" >
                 {show ? pokemon.map((poke)=>(
                     <div>
                         <div style={{display:"flex", justifyContent:"center", alignItems:"center"}}>
-                            <img src={pokeBall} style={{position:"absolute", height:"6vw", zIndex:"0"}}/>
+                            <img src={pokeBall} className="backgroundBalls" />
                             <Shake style={{zIndex:"2"}}><img style={{height:"15vh", zIndex:"2"}} src={poke} /></Shake>
                         </div>
                     </div>

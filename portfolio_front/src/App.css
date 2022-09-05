@@ -119,6 +119,16 @@ html{
     -webkit-text-stroke: 3px black;
 }
 
+.myTeamHolder{
+    text-align: center;
+    display: flex;
+}
+.backgroundBalls{
+    position: absolute;
+    height: 6vw;
+    z-index: 0;
+}
+
 .cards{
     display: flex;
     justify-content: space-around;
@@ -178,6 +188,10 @@ html{
     align-items: center;
 }
 
+.pokeIconPic{
+    width: 20vw;
+}
+
 .letters{
     font-family: "Pokemon Solid", sans-serif;
     color: gold;
@@ -187,6 +201,15 @@ html{
     padding-bottom: 25%;
     transform-origin: bottom center;
     font-size: 10vh;
+}
+.upRight{
+    display: flex;
+    justify-content: space-around;
+    width: 18vw;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-right: 2vw;
 }
 
 #letter1{
@@ -289,6 +312,8 @@ html{
 .leftSide{
     width: 50%;
     padding-left: 1vw;
+    display: flex;
+    flex-direction: column;
 }
 
 ul{
@@ -324,7 +349,7 @@ ul{
 
 .badgeBorder{
     min-height: 5vh;
-    min-width: 3vw;
+    min-width: 5vh;
     border: solid white 1px;
     display: flex;
     justify-content: center;
@@ -362,3 +387,244 @@ button{
     border: none;
     background: none;
 }
+
+/* reactive design */
+@media(max-width:820px){
+    .letters{
+        font-size: 5vh;
+        padding-bottom:30%;
+    }
+    .upRight{
+        font-size: 1vh;
+        padding-right: 2vw;
+        width: 21vw;
+    }
+    .header{
+        font-size: 2vh;
+    }
+    .modals{
+        width: 45vw;
+        height: fit-content;
+    }
+
+    .myTeamHolder{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .backgroundBalls{
+        height: 12vh;
+    }
+    .cards{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .leftCard{
+        width: 80vw;
+        margin-bottom: 2vh;
+    }
+
+    .middleCard{
+        width: 80vw;
+        margin-bottom: 2vh;
+    }
+
+    .rightCard{
+        width: 80vw;
+        margin-bottom: 2vh;
+    }
+
+    .pokeIcon{
+        width: 30vw;
+        height: 30vw;
+    }
+
+    .pokeCard{
+        font-size: 3vh;
+    }
+    .pokeCard h5{
+        font-size:4vh;
+    }
+
+    .pokeCard h6{
+        font-size: 3vh;
+    }
+
+    .contactRow div{
+        flex-wrap: wrap;
+    }
+
+    .cardBody{
+        height: fit-content;
+    }
+
+    .trainerCard{
+        width: 90vw;
+    }
+    .releasePoke{
+        height: 15vh;
+    }
+
+    .xpRow{
+        font-size: 20px;
+    }
+    .xpPoke{
+        height: 17vw;
+    }
+}
+
+/* this is for iphone XR */
+
+@media(max-width:414px){
+    .letters{
+        font-size: 4vh;
+        padding-bottom:40%;
+    }
+    .upRight{
+        font-size: 10px;
+        padding-right: 2vw;
+        width: 21vw;
+    }
+    .header{
+        font-size: 2vh;
+    }
+    .modals{
+        width: 45vw;
+        height: fit-content;
+    }
+
+    .myTeamHolder{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .backgroundBalls{
+        height: 12vh;
+    }
+    .cards{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .leftCard{
+        width: 80vw;
+        margin-bottom: 2vh;
+    }
+
+    .middleCard{
+        width: 80vw;
+        margin-bottom: 2vh;
+    }
+
+    .rightCard{
+        width: 80vw;
+        margin-bottom: 2vh;
+    }
+
+    .pokeIcon{
+        width: 30vw;
+        height: 30vw;
+    }
+
+    .contactRow div{
+        flex-wrap: wrap;
+    }
+
+    .cardBody{
+        height: fit-content;
+    }
+
+    .leftSide{
+        width: 70%;
+    }
+
+    .rightSide{
+        width: min-content;
+    }
+
+    .xpRow{
+        font-size: 20px;
+    }
+    .xpPoke{
+        height: 17vw;
+    }
+}
+
+
+
+
+
+/* These are goin to be media queries to make site more responsive */
+@media(max-width:376px){
+    .letters{
+        font-size: 4vh;
+        padding-bottom:40%;
+    }
+    .upRight{
+        font-size: 10px;
+        padding-right: 2vw;
+        width: 21vw;
+    }
+    .header{
+        font-size: 2vh;
+    }
+    .modals{
+        width: 45vw;
+        height: fit-content;
+    }
+
+    .myTeamHolder{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .backgroundBalls{
+        height: 12vh;
+    }
+    .cards{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .leftCard{
+        width: 80vw;
+        margin-bottom: 2vh;
+    }
+
+    .middleCard{
+        width: 80vw;
+        margin-bottom: 2vh;
+    }
+
+    .rightCard{
+        width: 80vw;
+        margin-bottom: 2vh;
+    }
+
+    .pokeIcon{
+        width: 30vw;
+        height: 30vw;
+    }
+
+    .contactRow div{
+        flex-wrap: wrap;
+    }
+
+    .cardBody{
+        height: fit-content;
+    }
+
+    .leftSide{
+        width: 70%;
+    }
+
+    .rightSide{
+        width: min-content;
+    }
+    .xpRow{
+        font-size: 20px;
+    }
+    .xpPoke{
+        height: 17vw;
+    }
+}
+
+

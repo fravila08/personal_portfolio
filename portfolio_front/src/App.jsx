@@ -77,15 +77,15 @@ function App() {
   return (
     <div className="App" >      
       {user ?
-          <div style={{display:"flex",justifyContent:"space-around", width:"18vw", position:"absolute", top:"0", right:"0"}}>
+          <div className='upRight' >
             <a href="#/myProfile" style={{textDecoration:"none", color:"gold"}} ><strong>My Profile</strong></a>
             <a href="#" onClick={signOut}  style={{textDecoration:"none", color:"gold"}} ><strong>Sign Out</strong></a>
           </div> :
-          <div style={{display:"flex",justifyContent:"space-around", width:"18vw", position:"absolute", top:"0", right:"0"}}>
+          <div className="upRight" >
             <a href="#/signUp" style={{textDecoration:"none", color:"gold"}} ><strong>Sign Up</strong></a>
             <a href="#/signIn" style={{textDecoration:"none", color:"gold"}} ><strong>Sign In</strong></a> 
           </div> }
-      <div className='topHeader' >
+      <div  className='topHeader' >
         <div style={{display:"flex", justifyContent:"center", height:"35%", marginBottom:"18%"}}>
           <div style={{textAlign:"center"}}>
             <span id="letter1" className='letters'>W</span>

@@ -75,7 +75,7 @@ function FindPokemon({user, setModalShow, setNeedRelease, setShowCascade}){
             </div>}
             <div className="pokeCard">
                 <div className="pokeIcon">
-                    { foundData ?  pokemon["sprites"] ?<img src={pokemon["sprites"]["front_default"]}  style={{width:"20vw"}}/> : <p></p> : <img src={pokeBall} style={{width:"8vw"}} />}
+                    { foundData ?  pokemon["sprites"] ?<img src={pokemon["sprites"]["front_default"]} className="pokeIconPic" /> : <p></p> : <img className="pokeIconPic" src={pokeBall} />}
                 </div>
                 <div style={{width:"100%", display:"flex", justifyContent:"center", flexDirection:"column", alignItems:"center"}}>
                     {foundData ? pokemon["sprites"] ? <h5 style={{fontFamily:'Pokemon Solid'}}>{pokemon["name"].toUpperCase()}</h5> : <p></p> : <p>Who will choose you?</p>}
