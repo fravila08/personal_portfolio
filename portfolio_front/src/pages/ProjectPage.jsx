@@ -47,7 +47,7 @@ function MyProjects({user, setModalShow, setNeedRelease, setShowCascade, setShow
                     <div>
                         <div style={{display:"flex", justifyContent:"center", alignItems:"center"}}>
                             <img src={pokeBall} className="backgroundBalls" />
-                            <Shake style={{zIndex:"2"}}><img style={{height:"15vh", zIndex:"2"}} src={poke} /></Shake>
+                            <Shake style={{zIndex:"2"}}><img className="pokeInBall" src={poke} /></Shake>
                         </div>
                     </div>
                 )): <p></p>}

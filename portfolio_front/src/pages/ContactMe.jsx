@@ -23,11 +23,20 @@ function ContactMe({setShowVolcano}){
             </div>
             <div style={{display:"flex", justifyContent:"center"}}>
                 <div style={{display:"flex", flexDirection:"column", alignContent:"center", }}>
-                    <div className="contactRow">
-                        <Shake><img className="ballRow" src={masterBall}/></Shake>
-                        <div style={{display:"flex", width:"70%", justifyContent:"space-between"}}>
-                            <h5>EMAIL:</h5><h5><a href="#">fr4v1l4@gmail.com</a></h5>
+                    <div id="contactForm" className="contactRow">
+                        <div style={{display:"flex", flexDirection:"column-reverse"}}>
+                            <h3>Send Me an Email</h3>
+                            <Shake><img className="ballRow" src={masterBall}/></Shake>
                         </div>
+                        <form action="https://formsubmit.co/fr4v1l4@gmail.com" method="POST" >
+                            <div className="formContactHolder">
+                                <input type="text" placeholder="Your Name" />
+                                <input type="text" placeholder="Your Email" />
+                            </div>
+                            <textarea cols="30" rows="10" placeholder="Type your message here."></textarea>
+                            
+                            <button type="submit" style={{color:"white",backgroundColor:"green", boder:"10px green solid", width:"100%"}}> Send</button>
+                        </form>
                     </div>
                     <div className="contactRow"   onClick={newBadge}>
                         <Shake><img className="ballRow" src={ultraBall}/></Shake>

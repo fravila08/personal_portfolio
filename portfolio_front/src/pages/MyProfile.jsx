@@ -62,13 +62,13 @@ function Myprofile({user, setReleaseShow, setShowEarth}){
     }
     
     return(
-        <div style={{marginTop:"20vh", paddingBottom:"10vh"}}>
+        <div className="myProfileHolder">
             <div className="pokemonTeam">
                 {pokemon.length ? 
                 pokemon.map((poke)=>(
                     <div className="pokeCardTeam">
-                        <img src={pokeBall} style={{position:"absolute", height:"10vh", zIndex:"-1"}}/>
                         <div style={{display:"flex", flexDirection:"column"}}>
+                            <img src={pokeBall} style={{position:"absolute", height:"10vh", zIndex:"-1"}}/>
                             <img className="releasePoke" src={poke.picture} />
                             <button style={{color:"red", border:"2px solid red", borderRadius:"5px"}} onClick={()=>releasePokemon(poke.id)}>RELEASE</button>
                         </div>
